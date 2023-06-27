@@ -35,12 +35,16 @@ if conf_mode == "singal":
     logging.info("开始处理登录信息！")
     
     if os.path.exists("./account.ini"):
-        conf.read("./config.ini")
-        protocol = conf.get("protocol", "type")
+        conf.read("./account.ini")
+        protocol = int(conf.get("protocol", "type"))
         deviceinfo = conf.get("protocol", "type")
+        w2l = int(conf.get("login", "way"))
         logging.info("获取到account.ini")
         logging.info("登录开始！")
-        pwba_wblogin.wblogin()
+        tmp = pwba_wblogin.wblogin(0,0,deviceinfo)
+        if tmp:
+            logging.info("登录成功！会话信息已经写入./session.info")
+            logging.info("进入主站，检测cookie有效性！")
         
 
     else :
