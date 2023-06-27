@@ -1,9 +1,7 @@
-def output_format(type,info):
-    if type == 1:
-        print("[Info]"+info)
-    if type == 2:
-        print("[Warning]"+info)
-    if type == 3:
-        print("[Error]"+info)
-    if type == 4:
-        print("[Notice]"+info)
+def find_unicode(text):
+    unicode_chars = []
+    for char in text:
+        char_unicode = ord(char)
+        if unicodedata.category(char_unicode) == 'So':
+            unicode_chars.append(char)
+    return unicode_chars
